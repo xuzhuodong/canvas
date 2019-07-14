@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+            display: block;
+            margin: 50px auto;
+            /* height: 800px; */
+            /* width: 800px; */
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+            canvas.width = 1024;
+            canvas.height = 768;
+            var context = canvas.getContext("2d");
+
+            context.lineWidth = 5; //线宽
+            context.strokeStyle = "#005588"; // 线的颜色
+            context.fillStyle = "blue";
+            //跟代码放的位置有关。而且功能会与closepath冲突，
+            //不管closepath有没有帮助我们封闭，使用fillstyle又看不出来了。因为已经都填充了。
+
+            for (var i = 0; i < 10; i++) {
+                context.beginPath();// 开始一个
+                context.arc(50 + i * 100, 60, 40, 0, 2 * Math.PI * (i + 1) / 10);
+
+                context.closePath();// 结束一个，重新另一个
+                //当我们使用closePath函数时，加入我们绘制的图形不是封闭的话，
+                //那么他就会帮助我们加上一条线,把图形封闭起来
+                context.stroke();
+                // context.fillStyle = "blue";
+                context.fill();
+            }
+
+            for (var i = 0; i < 10; i++) {
+                context.beginPath();// 开始一个
+                context.arc(50 + i * 100, 180, 40, 0, 2 * Math.PI * (i + 1) / 10);
+                //这里吧closepath函数去掉
+                context.stroke();
+                // context.fillStyle = "blue";
+                context.fill();
+            }
+
+            for (var i = 0; i < 10; i++) {
+                context.beginPath();// 开始一个
+                context.arc(50 + i * 100, 300, 40, 0, 2 * Math.PI * (i + 1) / 10, true);
+                //逆时针绘制，但是结束的位置还是不变的
+                context.closePath();
+                context.stroke();
+                // context.fillStyle = "blue";
+                context.fill();
+            }
+
+            for (var i = 0; i < 10; i++) {
+                context.beginPath();// 开始一个
+                context.arc(50 + i * 100, 400, 40, 0, 2 * Math.PI * (i + 1) / 10, true);
+                //逆时针绘制，但是结束的位置还是不变的
+                // context.closePath();
+                context.stroke();
+                
+                context.fill();
+            }
+            
+        }
+    </script>
+</body>
+
+</html>

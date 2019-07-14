@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+            display: block;
+            margin: 50px auto;
+            /* background: yellow; */
+            /* 默认：width: 300px;height: 150px; */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+    </canvas>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+            canvas.height = 384;
+            canvas.width = 512;
+            var context = canvas.getContext("2d");//2d就是二维
+            
+            context.beginPath();
+            context.moveTo(50,50);//从(50,50)
+            context.lineTo(350,350);//到(350，350)这个位置。
+            context.lineTo(350,50);
+            context.lineTo(50,50);//三个lineTo可以形成三角形。记住它们的顶点
+            context.lineWidth = 1;//线条宽度
+            context.strokeStyle = "yellow";//线条样式：蓝色
+            context.fillStyle = "blue";
+            context.stroke();
+            context.fill();
+            context.closePath();
+            
+            context.beginPath();
+            context.moveTo(30,70);//从(50,50)
+            context.lineTo(250,300);//到(350，350)这个位置。
+            context.lineTo(30,250);
+            context.lineTo(30,70);
+            context.strokeStyle = "black";
+            context.fillStyle = "red";
+            context.stroke();
+            context.fill();
+            context.beginPath();
+            /*
+            用context.beginPath();和context.beginPath();这两个包起来，
+            这样就可以同时花多个图形而不受影响
+            context.stroke();绘制线条
+            context.fill();填充颜色
+
+            */
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border:1px solid red;
+            display: block;
+            margin: 50px auto;
+            /* height: 800px; */
+            /* width: 800px; */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        /*
+        var tangram = [
+            {p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:"#caff67"},
+            {p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:"#67becf"},
+            {p:[{x:800,y:0},{x:800,y:400},{x:600,y:600},{x:600,y:200}],color:"#ef3d61"},
+            {p:[{x:600,y:200},{x:600,y:600},{x:400,y:400}],color:"#f9f51a"},
+            {p:[{x:400,y:400},{x:600,y:600},{x:400,y:800},{x:200,y:600}],color:"#a594c0"},
+            {p:[{x:200,y:600},{x:400,y:800},{x:0,y:800}],color:"#fa8ecc"},
+            {p:[{x:800,y:400},{x:800,y:800},{x:400,y:800}],color:"#f6ca29"}
+        ];
+        */
+        var tangram = [
+            {p:[{x:0,y:0},{x:400,y:0},{x:200,y:200}],color:"#caff67"},
+            {p:[{x:0,y:0},{x:200,y:200},{x:0,y:400}],color:"#67becf"},
+            {p:[{x:400,y:0},{x:400,y:200},{x:300,y:300},{x:300,y:100}],color:"#ef3d61"},
+            {p:[{x:300,y:100},{x:300,y:300},{x:200,y:200}],color:"#f9f51a"},
+            {p:[{x:200,y:200},{x:300,y:300},{x:200,y:400},{x:100,y:300}],color:"#a594c0"},
+            {p:[{x:100,y:300},{x:200,y:400},{x:0,y:400}],color:"#fa8ecc"},
+            {p:[{x:400,y:200},{x:400,y:400},{x:200,y:400}],color:"#f6ca29"}
+        ];
+        window.onload = function() {
+            var canvas = document.getElementById("canvas");
+
+            canvas.width = 399;
+            canvas.height = 400;
+
+            var context = canvas.getContext("2d");
+            for(var i=0; i<tangram.length; i++) {
+                draw(tangram[i],context);
+            }
+        }
+        function draw(piece,cxt) {
+            cxt.beginPath();
+            cxt.moveTo(piece.p[0].x , piece.p[0].y);
+            for(var i=1; i<piece.p.length; i++) {
+                cxt.lineTo(piece.p[i].x , piece.p[i].y);
+            }
+            cxt.closePath();
+
+            cxt.fillStyle = piece.color;
+            cxt.fill();
+
+            cxt.Strokestyle = "black";
+            cxt.lineWidth = 1;
+            cxt.stroke();
+        }
+    </script>
+</body>
+</html>

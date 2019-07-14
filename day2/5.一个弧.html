@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border:1px solid red;
+            display: block;
+            margin: 50px auto;
+            /* height: 800px; */
+            /* width: 800px; */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById("canvas");
+            canvas.width = 512;
+            canvas.height = 384;
+            var context = canvas.getContext("2d");
+            
+            context.lineWidth = 5; //线宽
+            context.strokeStyle = "#005588"; // 线的颜色
+            // context.arc(150,150,100,0,1.5*Math.PI);    // 3/4个圆
+            // context.arc(150,150,100,0,1.5*Math.PI,true);  // 本来3/4个圆，但是逆时针，现在只有1/4
+            context.arc(150,150,100,0,0.5*Math.PI,true); // 本来1/4个圆，但是逆时针，现在只有3/4
+            // context.arc(150,150,100,0,1.5*Math.PI);
+
+
+            /* 总共有6个参数：
+            1：x轴，
+            2：y轴，(圆的x,y坐标)
+            3：半径，
+            4：从 0 PI开始，  无论怎么画，都是从最右边开始
+            5：到 .. PI 结束
+            6：默认是false，顺时针(可以不写)
+            */
+            context.stroke();
+
+        }
+    </script>
+</body>
+</html>
